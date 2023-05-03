@@ -116,3 +116,36 @@ for entry in result:
 
 print(graph)
 print(graph['Python Operators'])
+graph['Python General Examples'][
+    'Python – Print until N'] = 'https://pythonexamples.org/python-print-123-n/'  # fix for 1 <a> которая неправильно написана на сайте
+
+
+def individuals_list_from_link(link):
+    responce = requests.get(link)
+    # print(r.encoding)
+    responce.encoding = 'utf-8'
+    # print(r.encoding)
+    print(f'Status code: {responce.status_code}, link: {link}')
+    # print(r.text)
+    soup = bs(responce.text, "html.parser")
+    # print(soup.original_encoding)
+
+    # result = soup.find_all('h3')
+    pass
+
+
+# PARSE 2
+for key_top in graph.keys():  # ex: Python datatypes or Python Operators
+    for key_2 in graph[key_top].keys():  # ex: Python int or Next level
+        if key_2 == 'Next_Level':
+            for key_3 in graph[key_top][key_2].keys():  # ex: Python Arithmetic Operators
+                # print(1)
+                for key_4 in graph[key_top][key_2][key_3].keys():  # ex: Python Addition
+                    # print(2)
+                    link = graph[key_top][key_2][key_3][key_4]
+                    # print(link)
+                    individuals_list_from_link(link)
+        else:
+            link = graph[key_top][key_2]
+            individuals_list_from_link(link)
+            # print(link)
