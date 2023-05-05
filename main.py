@@ -40,10 +40,11 @@ def lookforward2_h4(entry):
 #         if result.name == 'h3':
 #             return True
 
-class cell:
-    def __init__(self, name, link):
+class Example:
+    def __init__(self, name: str, example_text: str, description: str = ''):
         self.name = name
-        self.link = link
+        self.example_text = example_text
+        self.description = description
         pass
 
 
@@ -130,7 +131,9 @@ def individuals_list_from_link(link):
     soup = bs(responce.text, "html.parser")
     # print(soup.original_encoding)
 
-    # result = soup.find_all('h3')
+    result = soup.find_all('p', text='Python Program')
+    for entry in result:
+        print('Entry: ', entry.next_sibling.next_sibling.text)
     pass
 
 
